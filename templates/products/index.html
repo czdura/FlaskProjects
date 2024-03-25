@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a class="btn btn-primary" >Save Product</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Stock</td>
+        <td>Category</td>
+        <td>CreatedDate</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product['Id'] }}</td>
+                <td>{{ product['Name'] }}</td>
+                <td>{{ product['Price'] }}</td>
+                <td>{{ product['Stock'] }}</td>
+                <td>{{ product['CategoryName'] }}</td>
+                <td>{{ product['CreatedDate'] }}</td>
+                <td>
+                    <a class="btn btn-warning" href="{{ url_for('get_product', id=product['id']) }}">Update</a>
+                    <a class="btn btn-danger" >Delete</a>
+                </td>
+              
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
